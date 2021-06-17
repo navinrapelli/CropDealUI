@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import RegisterDealer from './Components/RegisterDealer'
+import FarmerDisplay from './Components/Admin/FarmerDisplay'
+import DealerDisplay from './Components/Admin/DealerDisplay'
+import CropsDisplay from './Components/Admin/CropsDisplay'
+import AdminMain from  './Components/Admin/AdminMain'
+import CropAdd from './Components/Farmer/CropAdd'
+import FarmerMain from './Components/Farmer/FarmerMain'
 function App() {
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <RegisterDealer/> */}
+      {/* {<FarmerDisplay/> */}
+      {/* {<DealerDisplay/> */}
+      {/* {<CropsDisplay/> */}
+       {/* <AdminMain/>  */}
+      {/* <CropAdd/> */}
+       <FarmerMain/> 
     </div>
+    
   );
 }
 

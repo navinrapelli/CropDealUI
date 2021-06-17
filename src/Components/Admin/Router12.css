@@ -1,0 +1,36 @@
+body{
+
+    background-color:lightblue;
+}
+
+
+
+.link1 #one{
+   
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: minmax(200px,left);
+    background-color:beige;
+    color: white;
+    font-size: 40px;
+    
+    
+
+    
+}
+
+.link1 #two h1 span{
+   
+   
+      color: tomato;
+      border: turquoise solid;
+      
+
+    
+}
+
+.link1 #two div{
+
+         margin-top: 20px;
+}
+
