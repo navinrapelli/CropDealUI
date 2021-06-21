@@ -11,15 +11,7 @@ function FarmerDisplay() {
 
        useEffect(()=>{
         
-        const fetchfarmers= async()=>{
-
-                 const response=await fetch("http://localhost:8701/admin/farmer/")
-                 const data=await response.json();
-                 setFarmer(data);
-                 console.log(data);
-
-
-        };
+        
 
         
         fetchfarmers();
@@ -27,6 +19,24 @@ function FarmerDisplay() {
         
     
        },[]);
+
+       const fetchfarmers= async()=>{
+
+        const response=await fetch("http://localhost:8701/admin/farmer/")
+        const data=await response.json();
+        setFarmer(data);
+        console.log(data);
+
+
+};
+
+
+
+
+
+
+
+
 
        const deletewithid=(id)=>
        {   
@@ -40,6 +50,8 @@ function FarmerDisplay() {
                     "Accept":'application/json'
               }
        })
+
+       fetchfarmers();
        }
      
    

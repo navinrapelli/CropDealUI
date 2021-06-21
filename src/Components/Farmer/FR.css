@@ -1,0 +1,21 @@
+#one{
+
+    background-color: green;
+    color: whitesmoke;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#two{
+
+    background-color: lightgreen;
+    padding: 20px
+}
+
+#two div{
+
+    size: 40px;
+    color:black;
+}
+

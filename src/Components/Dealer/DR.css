@@ -1,0 +1,42 @@
+#one{
+
+    background-color: green;
+    color: whitesmoke;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#two{
+
+    background-color: lightgreen;
+    padding: 20px
+}
+
+#two div{
+
+    size: 40px;
+    color:black;
+}
+
+.dealerdisplay_main{
+
+
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: minmax(50px,right);
+    
+    
+}
+
+.dealerdisplay_main #three{
+
+       
+    background-color:whitesmoke;
+    margin-top: 20px;
+    margin-left: 100px;
+
+
+}
+

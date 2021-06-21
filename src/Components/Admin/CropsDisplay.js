@@ -7,20 +7,29 @@ function CropsDisplay() {
 
        useEffect(()=>{
            
-        const fetchCrops= async()=>{
-
-                 const response=await fetch("http://localhost:8701/admin/crop/")
-                 const data=await response.json();
-                 setCrop(data);
-                 console.log(data);
-
-
-        };
+        
 
         
         fetchCrops();
 
        },[]);
+
+             
+       const fetchCrops= async()=>{
+
+        const response=await fetch("http://localhost:8701/admin/crop/")
+        const data=await response.json();
+        setCrop(data);
+        console.log(data);
+
+
+           };
+
+
+
+
+
+
 
      
        const deletecrop=(id)=>
@@ -36,7 +45,8 @@ function CropsDisplay() {
     
   
               })
-   
+      
+              fetchCrops();
            }
  
 

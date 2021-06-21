@@ -1,6 +1,7 @@
 .main{
-
-    background-color:lightgoldenrodyellow;
+          
+    
+    background-color:lightgreen;
 }
 
 
@@ -16,20 +17,49 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: bisque;
+    background-color:green;
+    color: white;
+
+}
+
+ #header div{
+
+    
+    text-align: right;
+    
+}
+
+
+#header div button{
+
+    
+    margin: 20px;
+    
+}
+
+
+#farmer hr{
+     
+    color: green;
+
 }
 .na div span{
 
     padding-left: 80px;
 }
 .main #one{
-    margin-left:100px;
-    margin-right: 100px;
+
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: minmax(200px,left);
-    background-color:beige;
-    color: black;
+    background-color:green;
+    padding: 20px;
     font-size: 20px;
 
+}
+
+#one NavLink{
+
+
+    background-color: white;
 }

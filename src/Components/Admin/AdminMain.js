@@ -1,6 +1,6 @@
 import React from 'react'
 import Route from 'react-router-dom/Route'
-import {BrowserRouter as Router,Link,NavLink} from 'react-router-dom'
+import {BrowserRouter as Router,NavLink,} from 'react-router-dom'
 import './Router12.css'
 import FarmerDisplay from './FarmerDisplay'
 import CropsDisplay from './CropsDisplay'
@@ -16,10 +16,10 @@ function AdminMain() {
             
 
             <div id="one">
-             <NavLink to="/home" activeStyle={{backgroundColor:"lightblue"}} >HOME </NavLink>
-            <NavLink to="/farmers" activeStyle={{backgroundColor:"lightblue"}}>Farmers</NavLink>
-            <NavLink to="/crops" activeStyle={{backgroundColor:"lightblue"}}>Crops</NavLink>
-            <NavLink to="/dealer" activeStyle={{backgroundColor:"lightblue"}}>Dealers</NavLink>
+             <NavLink to="/home" activeStyle={{backgroundColor:"lightgreen",}} >HOME </NavLink>
+            <NavLink to="/farmers" activeStyle={{backgroundColor:"lightgreen"}}>Farmers</NavLink>
+            <NavLink to="/crops" activeStyle={{backgroundColor:"lightgreen"}}>Crops</NavLink>
+            <NavLink to="/dealer" activeStyle={{backgroundColor:"lightgreen"}}>Dealers</NavLink>
             </div>
     
             <div id="two">

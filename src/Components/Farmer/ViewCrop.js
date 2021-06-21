@@ -1,8 +1,11 @@
 import React,{useState,useEffect} from 'react'
+import EditCrop from './EditCrop'
 
+import {BrowserRouter as Router,NavLink,Link,Switch,Route,useHistory} from 'react-router-dom'
 function ViewCrop(props) {
 
       const[crop,setCrop]=useState([]);
+      let history=useHistory();
       let  id=props.name.map(farm=>farm.id)
 
        
@@ -11,23 +14,31 @@ function ViewCrop(props) {
 
        useEffect(()=>{
            
-        const fetchCrops= async()=>{
-
-                 const response=await fetch("http://localhost:8703/farmer/crop/"+id[0])
-                 const data=await response.json();
-                 setCrop(data);
-                 console.log(data);
-
-
-        };
-
+    
         
         fetchCrops();
+        
 
        },[]);
 
+
+       const fetchCrops= async()=>{
+
+        const response=await fetch("http://localhost:8703/farmer/crop/"+id[0])
+        const data=await response.json();
+        setCrop(data);
+        console.log(data);
+
+
+           };            
+
+
+
+
+
+
      
-       const deletecrop=(id)=>
+       const deletecrop= (id)=>
        {    
                     
                console.warn(id);
@@ -40,13 +51,30 @@ function ViewCrop(props) {
     
   
               })
+
+              fetchCrops();
    
            }
+
+           const editcrop=(id,farid)=>{
+
+              console.warn(id,farid);
+
+              history.push("/farmermain/edituser/"+id+"/"+farid)
+               
+              
+             
+           }
+
  
 
 
 
     return (
+        
+                             
+      
+    <Router>
         <div class="bg-lightblue"  >    <h1>Crops Information</h1>
              
             {crop.map(crops=><div class="container bg-light text-dark" key={crops.id}>
@@ -60,15 +88,22 @@ function ViewCrop(props) {
                                     <div class="col"><strong>Total Price : </strong>{crops.total}</div>
                                     <div class="col"><strong>:Farmer id :</strong>{crops.uplodedby }</div>
                                     <div class="col"><strong>Farmer Name : </strong>{crops.sellername}</div>
-                                    <div class="col"> <button class="btn btn-primary" onClick={()=>deletecrop(crops.id)}>Delete</button> </div>            
+                                    <div class="col"> <button class="btn btn-primary" onClick={()=>deletecrop(crops.id)}>Delete</button> </div>
+                                    <div class="col"> <button class="btn btn-primary" onClick={()=>editcrop(crops.id,crops.uplodedby)}>Edit</button> </div>            
+            
                                 </div> <br></br><hr></hr>        
 
                              </div> 
                              
                              )}
-                             
+
+                 
+                
                     
         </div>
+        </Router>
+        
+        
     )
 }
 

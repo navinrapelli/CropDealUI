@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import './DR.css'
 
 
 function RegisterDealer() {
@@ -8,18 +9,22 @@ function RegisterDealer() {
       const[dealerpassword,setPass]=useState("");
       const[dealercontactno,setNumber]=useState(""); 
       const[role,setRole]=useState("");
+      const[crop_name,setCropName]=useState("");
+      const[farmer_name,setFarmerName]=useState("");
+      const[account_number,setAccoNo]=useState("");
+      const[bank_name,setBankName]=useState("")
+      const[ifsc_code,setIfcCode]=useState("") ;
+
       const[errors,setErrors]=useState({});
     
     
       async function Register()
        {   
         
-            let item={dealername,dealeremail,dealerpassword,dealercontactno,role}
-            setErrors(validation(item))
+            let item={dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
+            
 
-                 if(validation(item)==null)
-                 {
-             console.warn(validation(item))
+                
             console.warn(item)
            let result=await fetch("http://localhost:8702/dealer/add",{
             method:'POST',
@@ -32,68 +37,47 @@ function RegisterDealer() {
 
             })
             result= await  result.json()          
-            console.warn("result",result)}
+            console.warn("result",result)
 
-            else{
-
-                console.warn("fill the form nit")
-            }
-
-            
-            
-       }
-
-       const validation=(item)=>{
            
-        if(!item.dealername){
-              console.warn("name is required")
-            errors.dealername="Name is required"
-        }
-        if(!item.dealeremail){
 
-            errors.dealeremail="Email is required"
-        }else if(!/\S+@S+.\S+/.test(item.email))
-        {
-             errors.dealeremail="Email is invalid"
-        }
-        if(!item.dealerpassword){
-            errors.dealerpassword="Password is required"
-        } else if(item.dealerpassword.length<3)
-        {
-            errors.dealerpassword="Password Must be more than 3"
-        }
-
-
+            
+            
        }
 
+       
 
     return (   
-         
-        
-        <div className="col-sm-6 offset-sm-3 " >
-        
-            <h1>Register here</h1>
-            <div>
+         <div>
+      <div id="one"><h1> Register Here</h1></div>
+        <div className="col-sm-6 offset-sm-3 " id="two">
+        <div class="alert alert-primary" role="alert">
+                Perosnal Details
+             </div>
             <input type="text" onChange={(e)=>setName(e.target.value)}     class="form-control " placeholder="Name" id="name" required></input>
-            {errors.dealername &&<p className="error">{errors.dealername}</p>}   
-            </div>
             <br></br>
-        
             <input type="email" onChange={(e)=>setEmail(e.target.value)} class="form-control" placeholder="Email" required ></input>
-            {errors.dealeremail &&<p className="error">{errors.dealeremail}</p>} 
-            
             <br></br>
             <input type="password" onChange={(e)=>setPass(e.target.value)} className="form-control" placeholder="Password" required></input>
-            {errors.dealerpassword &&<p className="error">{errors.dealerpassword}</p>} 
             <br></br>
+ 
             <input type="text" onChange={(e)=>setNumber(e.target.value)} className="form-control" placeholder="Contatct No" required></input>
             <br></br>
             <input type="text" onChange={(e)=>setRole(e.target.value)} className="form-control" placeholder="Role" required></input>
             <br></br>
+            <div class="alert alert-primary" role="alert">
+                Bank Deatils
+             </div>
+            <input type="text" onChange={(e)=>setAccoNo(e.target.value)} className="form-control" placeholder="Account No" required></input>
+            <br></br>
+            <input type="text" onChange={(e)=>setBankName(e.target.value)} className="form-control" placeholder="Bank Name" required></input>
+            <br></br>
+            <input type="text" onChange={(e)=>setIfcCode(e.target.value)} className="form-control" placeholder="IFSC Code" required></input>
+            <br></br>
             <button onClick={Register} class="btn btn-primary">Register</button>
     
           </div>
-          
+          </div>
     )
 }
 

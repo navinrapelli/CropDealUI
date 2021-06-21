@@ -2,37 +2,37 @@ import React,{useState,useEffect} from 'react'
 import {useParams} from  'react-router-dom'
 import Route from 'react-router-dom/Route'
 import {BrowserRouter as Router,Link,NavLink} from 'react-router-dom'
-import './farmermain.css'
-import CropAdd from '../Farmer/CropAdd'
 import ViewCrop from '../Farmer/ViewCrop'
+function DealerMain() {
 
-function FarmerMain() {
-
-      const[farmer,setfarmer]=useState([]);
+      const[dealer,setdelaer]=useState([]);
     
 
        useEffect(()=>{
            
-        const fetchCrops= async()=>{
-
-                 const response=await fetch("http://localhost:8703/farmer/105")
-                 const data=await response.json();
-                 setfarmer([data]);
-                 console.log(data);
-
-
-        };
-
+      
         
-        fetchCrops();
+        fetchdealer();
 
        },[]);
 
-       const deletefarmer=(id)=>
+
+       const fetchdealer= async()=>{
+
+        const response=await fetch("http://localhost:8702/dealer/202")
+        const data=await response.json();
+        setdelaer([data]);
+        console.log(data);
+
+
+};
+
+
+       const deletedealer=(id)=>
        {    
                     
                console.warn(id);
-           fetch("http://localhost:8701/admin/crop/delete/"+id,{
+           fetch("http://localhost:8702/dealer/"+id,{
               method:'DELETE',
               headers:{
                     "Content-Type":'application/json',
@@ -50,28 +50,20 @@ function FarmerMain() {
     return ( 
         <Router>
         <div class="bg-lightblue" className="main" >    
-              <div id="header"> <h1>Welcome, {farmer.map(on=>on.farmername)}</h1> </div>    
+              <div id="header"> <h1>Welcome, {dealer.map(on=>on.dealername)}</h1> </div>    
              <br></br>
-             {farmer.map(farm=><div class="container bg-light text-dark" className="" >
+             <div id="main1">
+             {dealer.map(deal=><div class="container bg-light text-dark" id="farmer" >
                                             <div class="col" className="na">
                                             <h2>Personal Details</h2>
-                                    <div class="col"><strong>Name: </strong><span>{farm.farmername}</span></div>
-                                    <div class="col"><strong>Email: </strong><span>{farm.farmeremail}</span></div>
-                                    <div class="col"><strong>Contact No : </strong><span>{farm.farmercontactno}</span></div>
+                                    <div class="col"><strong>Name: </strong><span>{deal.dealername}</span></div>
+                                    <div class="col"><strong>Email: </strong><span>{deal.dealermail}</span></div>
+                                    <div class="col"><strong>Contact No : </strong><span>{deal.dealercontactno}</span></div>
                                     <div class="row"></div>
                                 </div> 
-                                 <br></br><hr></hr>
+                                 <br></br>
                                 <div class="col" className="na">
-                                            <h2>Address</h2>
-                                    <div class="col"><strong>Street: </strong><span>{farm.farmeraddress.street}</span></div>
-                                    <div class="col"><strong>State: </strong><span>{farm.farmeraddress.state}</span></div>
-                                    <div class="col"><strong>City  : </strong><span>{farm.farmeraddress.city}</span></div>
-                                    <div class="col"><strong>Pincode  : </strong><span>{farm.farmeraddress.pincode}</span></div>
-                                    <div class="row"></div>
-                                </div> 
-                                <br></br><hr></hr>
-                                <div class="col" className="na">
-                                            <h2>BankDetails</h2>
+                                            <h2>Bank Details</h2>
                                     <div class="col"><strong>Account Number: </strong><span>{farm.farmerbankdeatils.account_number}</span></div>
                                     <div class="col"><strong>Bank Name: </strong><span>{farm.farmerbankdeatils.bank_name}</span></div>
                                     <div class="col"><strong>IFSC Code  : </strong><span>{farm.farmerbankdeatils.ifsc_code}</span></div>
@@ -105,8 +97,9 @@ function FarmerMain() {
             <Route path="/edit" exact render={()=>
                         {
 
-                        return <h1>Edit crop</h1>
+                        return <EditCrop/>
                         }}/>
+            </div>
             </div>
     </div>
     </Router>                          
@@ -119,4 +112,4 @@ function FarmerMain() {
     )
 }
 
-export default FarmerMain
+export default DealerMain

@@ -8,24 +8,29 @@ function DealerDisplay() {
 
        useEffect(()=>{
            
-        const fetchdealers= async()=>{
-
-                 const response=await fetch("http://localhost:8701/admin/dealer/")
-                 const data=await response.json();
-                 setDealer(data);
-                 console.log(data);
-
-
-        };
 
         
         fetchdealers();
 
        },[]);
 
+       const fetchdealers= async()=>{
+   
+          
+        const response=await fetch("http://localhost:8701/admin/dealer/")
+        const data=await response.json();
+        setDealer(data);
+        console.log(data);
+                 };
+
+
+
+
+
      
-       function deletedealer(id)
+       const deletedealer= (id)=>
        {    
+        
             console.warn(id)
               
            fetch('http://localhost:8701/admin/dealer/delete/'+id,{
@@ -34,13 +39,14 @@ function DealerDisplay() {
                     "Content-Type":'application/json',
                     "Accept":'application/json'
               }
-    
-  
-              })
-   
-           }
- 
-
+              }
+        
+              ) 
+              fetchdealers();
+              
+            }
+        
+                  
 
 
     return (
@@ -66,7 +72,17 @@ function DealerDisplay() {
                              
                              )}
                              
+
+
+
+                            
                     
+
+
+
+
+
+
         </div>
     )
 }
