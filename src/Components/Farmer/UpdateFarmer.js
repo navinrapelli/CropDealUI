@@ -3,6 +3,8 @@ import './FR.css'
 
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function UpdateFarmer() {
 
       const[farmername,setName]=useState();
@@ -26,7 +28,7 @@ function UpdateFarmer() {
       let history=useHistory();
 
       console.warn(id);
-
+        //let{id}=useParams();
 
 
 
@@ -75,7 +77,7 @@ function UpdateFarmer() {
     
       async function Register(e)
        {   
-             
+               toast.success("Farmer Updated")
            
                   e.preventDefault();
 
@@ -98,7 +100,7 @@ function UpdateFarmer() {
             console.warn("result",result)
 
            
-            history.push("/farmermain")
+            history.push("/farmermain/"+id)
             
        }
 
@@ -145,7 +147,7 @@ function UpdateFarmer() {
             <br></br>
             <button onClick={Register} class="btn btn-primary">Update</button>
             </div>
-    
+            <ToastContainer />
           </div>
           
     )

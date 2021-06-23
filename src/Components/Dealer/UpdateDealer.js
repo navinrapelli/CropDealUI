@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from 'react'
 import './DR.css'
 
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
 function UpdateDealer() {
@@ -15,7 +18,8 @@ function UpdateDealer() {
       const[account_number,setAccoNo]=useState();
       const[bank_name,setBankName]=useState();
       const[ifsc_code,setIfcCode]=useState() ;
-       const id=204;
+       const{id}=useParams();
+       let history=useHistory();
      // const[errors,setErrors]=useState({});
 
 
@@ -64,7 +68,8 @@ function UpdateDealer() {
     
       async function Register()
        {   
-        
+             
+          toast.success("Update Successfully!" ,{position:"bottom-left"});
             let item={id,dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
             
 
@@ -80,15 +85,21 @@ function UpdateDealer() {
   
 
             })
-            result= await  result.json()          
-            console.warn("result",result)    
+            
+            history.push("/dealermain") 
+            
+            
+            
        }
+       const backtomain=()=>{
 
+          history.push("/dealermain")
+     }
        
 
     return (   
          <div>
-      <div id="one"><h1> Update Here</h1></div>
+      <div id="one" onClick={()=>backtomain()}><h1> Update Here</h1></div>
         <div className="col-sm-6 offset-sm-3 " id="two">
              <h2>Update Here</h2>
             <input type="text" onChange={(e)=>setName(e.target.value)}   value={dealername}    class="form-control " placeholder="Name" id="name" required></input>
@@ -112,6 +123,7 @@ function UpdateDealer() {
             <button onClick={Register} class="btn btn-primary">Update</button>
     
           </div>
+          <ToastContainer />
           </div>
     )
 }

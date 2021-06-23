@@ -8,18 +8,22 @@ body{
 .link1 #one{
    
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
     grid-template-rows: minmax(200px,left);
     background-color:green;
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     
     
 
     
 }
 
+.ad img{
 
+    width: 500x;
+    height:500px;
+}
 
 .link1 #two h1 span{
    

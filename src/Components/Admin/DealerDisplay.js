@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react'
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function DealerDisplay() {
 
@@ -17,7 +19,7 @@ function DealerDisplay() {
        const fetchdealers= async()=>{
    
           
-        const response=await fetch("http://localhost:8701/admin/dealer/")
+        const response=await fetch("http://localhost:8701/admin/dealer")
         const data=await response.json();
         setDealer(data);
         console.log(data);
@@ -42,6 +44,8 @@ function DealerDisplay() {
               }
         
               ) 
+
+              toast.success("Deleted Dealer with id="+id);
               fetchdealers();
               
             }
@@ -81,7 +85,7 @@ function DealerDisplay() {
 
 
 
-
+                             <ToastContainer /> 
 
         </div>
     )

@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react'
 
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function CropsDisplay() {
 
       const[crop,setCrop]=useState([]);
@@ -45,7 +48,7 @@ function CropsDisplay() {
     
   
               })
-      
+                  toast.success("Deleted Crop with id="+id);
               fetchCrops();
            }
  
@@ -73,7 +76,7 @@ function CropsDisplay() {
                              
                              )}
                              
-                    
+                             <ToastContainer /> 
         </div>
     )
 }

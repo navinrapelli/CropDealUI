@@ -3,6 +3,9 @@ import './FR.css'
 
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function EditCrop() {
    
     const[crop1,setCrop]=useState();
@@ -81,7 +84,7 @@ function EditCrop() {
       async function Register()
        {   
             
-           
+              toast.success("Edited Successfully")
         
                
              let item ={id,crop_name,quantity,selling_price,total,uplodedby,sellername,address:{street,state,city,pincode}}
@@ -100,7 +103,7 @@ function EditCrop() {
             })
             result= await  result.json()     
             
-            history.push("/farmermain")
+            history.push("/farmermain/"+farid)
         
         }
 
@@ -140,6 +143,7 @@ function EditCrop() {
             <button onClick={Register} class="btn btn-primary">Update</button>
     
           </div>
+          <ToastContainer />
       </div>   
     )
 }

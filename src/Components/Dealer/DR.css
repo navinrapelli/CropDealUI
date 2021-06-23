@@ -39,4 +39,45 @@
 
 
 }
+.navin img{
 
+
+    height: 100%;
+    width: 100%;
+}
+
+.main{
+          
+    
+    background-color:lightgreen;
+    padding-bottom: 80%;
+    text-align: center;
+}
+
+
+
+#header{
+
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color:green;
+    color: white;
+
+
+}
+#navv span{
+ 
+    margin: 10px;
+    size: 20px;
+    background-color: white;
+    padding: 10px;
+}
+
+#header div{
+
+    
+    text-align: right;
+    
+}

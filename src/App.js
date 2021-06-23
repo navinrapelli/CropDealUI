@@ -11,11 +11,17 @@ import Home from './Components/Main/Home'
 import EditCrop from './Components/Farmer/EditCrop'
 import CropsDisplayDe from './Components/Dealer/CropsDisplayDe'
 
-import {BrowserRouter as Router,NavLink,Route} from 'react-router-dom'
+import {BrowserRouter as Router,NavLink,Route,useParams} from 'react-router-dom'
 import FarmerRegister from './Components/Farmer/FarmerRegister'
 import UpdateFarmer from './Components/Farmer/UpdateFarmer';
 import UpdateDealer from './Components/Dealer/UpdateDealer'
+import DealerMain from './Components/Dealer/DealerMain'
+import Login from './Components/firebase/Login'
+import LoginFarmer from './Components/Farmer/LoginFarmer'
 function App() {
+
+
+  
   return (
   
     <Router>
@@ -26,17 +32,38 @@ function App() {
       {/* {<FarmerDisplay/> */}
       {/* {<DealerDisplay/> */}
       {/* {<CropsDisplay/> */}
-       {/* <AdminMain/>    */}
+       
       {/* <CropAdd/> */}
-             
-        {/* <Home/> */}
+          {/* <DealerMain/> */}
+       
          {/* <EditCrop/>  */}
           {/* <FarmerRegister/>  */}
-         {/* <CropsDisplayDe/> */}
+          {/* <CropsDisplayDe/>  */}
          {/* <FarmerMain1/> */}
-         <UpdateDealer/>
-        
-        {/* <Route exact path="/farmermain"> 
+         {/* <UpdateDealer/> */}
+
+         <Route exact path="/home">
+               <Home/> 
+         </Route>
+
+              
+         <Route exact path="/loginadmin">
+          <Login/> 
+        </Route>
+
+      
+
+        <Route exact path="/admin">
+          <AdminMain/>   
+        </Route>
+               
+                 <Route  path="/dealermain">
+                   <DealerMain/>
+               </Route>
+               <Route exact path="/editdealer/:id">
+                    <UpdateDealer/>
+                </Route>  
+        <Route exact path="/farmermain/:id">  
            <FarmerView/>  
         </Route>
         <Route exact path="/farmermain/edituser/:id/:farid">
@@ -44,8 +71,14 @@ function App() {
         </Route>
          <Route exact path="/editfarmer/:id">
          <UpdateFarmer/>
-        </Route> */}
-
+         </Route>  
+         <Route exact path="/loginfarmer/:id1"> 
+               <LoginFarmer/>
+        </Route>
+        <Route exact path="/farmerregistration">
+          <FarmerRegister/>
+        </Route>
+        
     
 
     </div>

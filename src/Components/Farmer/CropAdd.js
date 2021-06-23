@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 
 
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function CropAdd(props) {
 
       const[crop_name,setCropName]=useState("");
@@ -29,6 +31,8 @@ function CropAdd(props) {
   
 
             })
+
+            toast.success("Successfully Added Crop")
             result= await  result.json()          
             console.warn("result",result)
         }
@@ -64,6 +68,7 @@ function CropAdd(props) {
             <br></br>
             <button onClick={Register} class="btn btn-primary">ADD</button>
     
+            <ToastContainer />
           </div>
           
     )

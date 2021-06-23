@@ -3,6 +3,9 @@ import './FR.css'
 
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
+
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function FarmerRegister() {
 
       const[farmername,setName]=useState("");
@@ -34,12 +37,15 @@ function FarmerRegister() {
     
     
       async function Register(e)
-       {   
-             console.warn()  
-            history.push("/farmermain")
+       {     
+            let id=Math.floor(Math.random() * (100 - 10) + 10) 
+             toast.success("Update Sucessfully")
+            history.push("/loginfarmer/"+id)
+              
+             console.warn() 
                   e.preventDefault();
-
-      let item={farmername,farmeremail,farmerpassword,farmercontactno,role,farmeraddress:{street,state,city,pincode},farmerbankdeatils:{account_number,bank_name,ifsc_code},messages:{farmer_id,dealer_id,dealer_name,dealer_No,message}}
+                            
+      let item={id,farmername,farmeremail,farmerpassword,farmercontactno,role,farmeraddress:{street,state,city,pincode},farmerbankdeatils:{account_number,bank_name,ifsc_code},messages:{farmer_id,dealer_id,dealer_name,dealer_No,message}}
             
 
                 
@@ -55,7 +61,7 @@ function FarmerRegister() {
 
             })
             result= await  result.json()          
-            console.warn("result",result)
+            console.warn(result)
 
            
              
@@ -100,7 +106,8 @@ function FarmerRegister() {
             <br></br>
             <button onClick={Register} class="btn btn-primary">Register</button>
             </div>
-    
+     
+            <ToastContainer />
           </div>
           
     )

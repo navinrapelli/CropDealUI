@@ -2,6 +2,9 @@ import React,{useState,useEffect} from 'react'
 import EditCrop from './EditCrop'
 
 import {BrowserRouter as Router,NavLink,Link,Switch,Route,useHistory} from 'react-router-dom'
+
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function ViewCrop(props) {
 
       const[crop,setCrop]=useState([]);
@@ -51,8 +54,9 @@ function ViewCrop(props) {
     
   
               })
-
               fetchCrops();
+                    
+              
    
            }
 
@@ -97,7 +101,7 @@ function ViewCrop(props) {
                              
                              )}
 
-                 
+<ToastContainer />
                 
                     
         </div>

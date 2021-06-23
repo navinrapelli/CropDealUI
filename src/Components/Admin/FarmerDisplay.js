@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react'
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function FarmerDisplay() {
 
@@ -50,8 +52,9 @@ function FarmerDisplay() {
                     "Accept":'application/json'
               }
        })
-
+          toast.success("Delted Farmer with id="+id)
        fetchfarmers();
+    
        }
      
    
@@ -83,6 +86,7 @@ function FarmerDisplay() {
                              )}
                              
                     
+                             <ToastContainer />
         </div>
     )
 }

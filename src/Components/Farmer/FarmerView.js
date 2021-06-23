@@ -1,16 +1,19 @@
 import React,{useState,useEffect} from 'react'
-import {BrowserRouter as Router,Link,NavLink,Route,useHistory} from 'react-router-dom'
+import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 import './farmermain.css'
 import CropAdd from './CropAdd'
 import ViewCrop from './ViewCrop'
 import EditCrop from './EditCrop'
 import FarmerRegister from './FarmerRegister'
 import UpdateFarmer from './UpdateFarmer'
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function FarmerMain() {
 
       const[farmer,setfarmer]=useState([]);
       const[msg,setmsg]=useState([]);
       let history=useHistory();
+      let{id}=useParams();
     
     
 
@@ -22,7 +25,7 @@ function FarmerMain() {
 
        const fetchCrops= async()=>{
 
-        const response=await fetch("http://localhost:8703/farmer/104")
+        const response=await fetch("http://localhost:8703/farmer/"+id)
         const data=await response.json();
         setfarmer([data]);
         console.log(data);
@@ -33,7 +36,7 @@ function FarmerMain() {
          const getmsg=async()=>{
 
              
-        const response=await fetch("http://localhost:8703/farmer/msg/104")
+        const response=await fetch("http://localhost:8703/farmer/msg/"+id)
         const data=await response.json();
          setmsg(data);
          console.log(data);
@@ -71,8 +74,12 @@ function FarmerMain() {
 
           }
            
-          
-                    
+        const  signout=()=>{
+
+           toast.success("Succesfuly Signout")
+          history.push("/home")
+        }
+              
          console.warn(msg);
          console.warn(msg.dealer_name);
                                           
@@ -85,7 +92,7 @@ function FarmerMain() {
               <div id="header"> <h1>Welcome, {farmer.map(on=>on.farmername)}</h1> 
               <div>    <button class="btn btn-primary " onClick={()=>editfarmer(farmer.map(ind=>ind.id))}>Update</button>
               <button class="btn btn-primary " onClick={()=>deletefarmer(farmer.map(ind=>ind.id))}>Delete</button>
-              <button class="btn btn-primary">Sign Out</button>
+              <button class="btn btn-primary" onClick={signout}>Sign Out</button>
               </div>
                 </div>    
              <br></br>
@@ -160,6 +167,7 @@ function FarmerMain() {
             </div>
         
             </div>
+            <ToastContainer />
     </div>
    
 

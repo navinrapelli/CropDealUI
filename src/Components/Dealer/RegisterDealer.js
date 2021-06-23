@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import './DR.css'
-
+import { ToastContainer, toast,position } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function RegisterDealer() {
 
@@ -20,7 +21,7 @@ function RegisterDealer() {
     
       async function Register()
        {   
-        
+                 toast.success("Register Successfully")
             let item={dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
             
 
@@ -77,6 +78,7 @@ function RegisterDealer() {
             <button onClick={Register} class="btn btn-primary">Register</button>
     
           </div>
+          <ToastContainer />
           </div>
     )
 }

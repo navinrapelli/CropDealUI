@@ -1,11 +1,17 @@
 import React,{useState,useEffect} from 'react'
 import './DR.css'
 
-function CropsDisplayDe() {
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
+
+function CropsDisplayDe(props) {
 
       const[crop,setCrop]=useState([]);
-    
+      let history=useHistory();
+     let delid=props.delid
 
+     console.warn(delid[0])
        useEffect(()=>{
            
         
@@ -18,7 +24,7 @@ function CropsDisplayDe() {
              
        const fetchCrops= async()=>{
 
-        const response=await fetch("http://localhost:8701/admin/crop/")
+        const response=await fetch("http://localhost:8702/dealer/crops")
         const data=await response.json();
         setCrop(data);
         console.log(data);
@@ -27,18 +33,12 @@ function CropsDisplayDe() {
            };
 
 
-
-
-
-
-
-     
-       const deletecrop=(id)=>
+       const subscribe=(id)=>
        {    
                     
                console.warn(id);
-           fetch("http://localhost:8701/admin/crop/delete/"+id,{
-              method:'DELETE',
+           fetch("http://localhost:8702/dealer/crop/subscribe/"+delid[0]+"/"+id,{
+              method:'POST',
               headers:{
                     "Content-Type":'application/json',
                     "Accept":'application/json'
@@ -46,6 +46,10 @@ function CropsDisplayDe() {
     
   
               })
+
+              
+            
+             toast.success("Subscribe Successfully!");
       
               fetchCrops();
            }
@@ -68,7 +72,7 @@ function CropsDisplayDe() {
                                                 <div class="col"><strong>Total Price  </strong>{crops.total}</div>
                                                 <div class="col"><strong>:Farmer id </strong>{crops.uplodedby }</div>
                                                 <div class="col"><strong>Farmer Name </strong>{crops.sellername}</div>
-                                                <div class="col"> <button class="btn btn-primary" onClick={()=>deletecrop(crops.id)}>SubScribe</button> </div>            
+                                                <div class="col"> <button class="btn btn-primary" onClick={()=>{subscribe(crops.id)}}>SubScribe</button> </div>            
                                             </div> <br></br><hr></hr>        
                                  
                                      </div> 
@@ -77,7 +81,8 @@ function CropsDisplayDe() {
                              )}
 
 
-
+         
+               <ToastContainer />
                              
                     
         </div>

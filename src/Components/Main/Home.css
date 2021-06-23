@@ -1,16 +1,32 @@
-.one{
+#main{
 
-background-color: green;
-padding-top: 10px;
-text-align: left;
+    background-color: lightgreen;
+    padding-bottom: 200px;
+}
+#main nav{
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: green;
+    margin-bottom: 10px;
     
 }
 
- .one img{
-    margin-left: 10px;
-    margin-bottom: 10px;
-    width: 90px;
-    height: 90px;
+#main #del{
+
+    width: 60%;
+    height: 60%;
+    margin-bottom: 20px;
+}
+
+#navbarText #one .nav-item{
+background-color: white;
+    margin: 20px;
 
 }
 
+#crop{
+
+    color: white;
+}
