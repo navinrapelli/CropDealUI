@@ -7,7 +7,7 @@ import '../firebase/login.css'
 
 import { ToastContainer, toast,position } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-function LoginFarmer() {
+function LoginDealer() {
 
   let{id}=useParams();
     let history=useHistory();
@@ -15,7 +15,7 @@ function LoginFarmer() {
     const[email,setemail]=useState("");
     const[password,setPass]=useState("");
 
-
+      
     const login=()=>{
 
             
@@ -24,7 +24,7 @@ function LoginFarmer() {
             .then((auth)=>{
                  
         toast.success("sign in sucessfully")
-                history.push("/farmermain/"+id)
+                history.push("/dealermain")
 
             })
             .catch((e)=>
@@ -35,7 +35,7 @@ function LoginFarmer() {
     const register=()=>{
                 
             
-        //auth.createUserWithEmailAndPassword(email,password)
+       // auth.createUserWithEmailAndPassword(email,password)
         //.then((auth)=>{
 
 
@@ -44,7 +44,7 @@ function LoginFarmer() {
        //.catch((e)=>alert(e.message));
          
 
-         history.push("/farmerregistration/"+id)
+       //  history.push("/dealerregstration")
 
     }
     
@@ -73,4 +73,4 @@ function LoginFarmer() {
     )
 }
 
-export default LoginFarmer
+export default LoginDealer

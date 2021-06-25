@@ -70,6 +70,7 @@ function UpdateDealer() {
        {   
              
           toast.success("Update Successfully!" ,{position:"bottom-left"});
+          history.push("/dealermain/"+id) 
             let item={id,dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
             
 
@@ -86,7 +87,7 @@ function UpdateDealer() {
 
             })
             
-            history.push("/dealermain") 
+            
             
             
             

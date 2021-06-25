@@ -6,6 +6,18 @@ import delaer from './delaer2.jpg'
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
 function Home() {
+  let id=23
+  let history=useHistory();
+
+  const gotomain=()=>{
+
+         history.push("/loginfarmer/"+id)
+  }
+
+  const gotodelaer=()=>{
+
+           history.push("/logindealer")
+  }
     return (
         <div id="main">
                  <nav class="navbar navbar-expand-lg navbar-white">
@@ -21,10 +33,10 @@ function Home() {
   
         </li>
         <li class="nav-item c-white">
-        <Link to="/loginfarmer/45" > Farmer</Link>
+           <div onClick={gotomain}><Link > Farmer</Link></div>   
         </li>
         <li class="nav-item">
-        <Link to="/dealermain" > Dealer</Link>
+           <div onClick={gotodelaer}><Link > Dealer</Link></div>  
         </li>
       </ul>
       <span id="crop">

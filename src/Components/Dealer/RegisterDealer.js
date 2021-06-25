@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import './DR.css'
+import {useHistory,useParams} from 'react-router-dom'
+
 import { ToastContainer, toast,position } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,12 +19,15 @@ function RegisterDealer() {
       const[ifsc_code,setIfcCode]=useState("") ;
 
       const[errors,setErrors]=useState({});
-    
+      let history=useHistory();
     
       async function Register()
-       {   
+       {           
+            let id=Math.floor(Math.random() * (100 - 10) + 10) 
                  toast.success("Register Successfully")
-            let item={dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
+                 toast.success("Update Sucessfully")
+           
+            let item={id,dealername,dealeremail,dealerpassword,dealercontactno,role,dealersubcropdeatils:{crop_name,farmer_name},dealerbankdeatils:{account_number,bank_name,ifsc_code}}
             
 
                 
@@ -37,7 +42,10 @@ function RegisterDealer() {
   
 
             })
+            
+            history.push("/dealermain/"+id)
             result= await  result.json()          
+            
             console.warn("result",result)
 
            

@@ -48,8 +48,9 @@ function CropsDisplay() {
     
   
               })
-                  toast.success("Deleted Crop with id="+id);
+                  
               fetchCrops();
+              toast.success("Deleted Crop with id="+id);
            }
  
 

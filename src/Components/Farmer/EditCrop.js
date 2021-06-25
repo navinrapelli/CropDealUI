@@ -9,11 +9,11 @@ import 'react-toastify/dist/ReactToastify.css';
 function EditCrop() {
    
     const[crop1,setCrop]=useState();
-    const{id,farid}=useParams();
+    const{id2,farid}=useParams();
     
        
     let history=useHistory();
-    console.warn(id);
+    console.warn(id2);
     console.warn(farid);
 
     console.log(crop1);
@@ -83,14 +83,14 @@ function EditCrop() {
 
       async function Register()
        {   
-            
+          
               toast.success("Edited Successfully")
         
-               
+               let id=id2
              let item ={id,crop_name,quantity,selling_price,total,uplodedby,sellername,address:{street,state,city,pincode}}
             console.warn(item)
             
-           let result=await fetch("http://localhost:8703/farmer/crop/update/"+id,{
+           let result=await fetch("http://localhost:8703/farmer/crop/update/"+id2,{
             method:'PUT',
             body:JSON.stringify(item),
 

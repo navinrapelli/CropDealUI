@@ -60,14 +60,14 @@ function ViewCrop(props) {
    
            }
 
-           const editcrop=(id,farid)=>{
+           const editcrop=(id2,farid)=>{
 
-              console.warn(id,farid);
+              console.warn(id2,farid);
 
-              history.push("/farmermain/edituser/"+id+"/"+farid)
+              history.push("/edituser/"+id2+"/"+farid)
                
               
-             
+             fetchCrops();
            }
 
  

@@ -1,11 +1,36 @@
 import React,{useState} from 'react'
 import './FR.css'
-
+//import {useForm} from 'react-hook-form'
+//import {yupResolver} from '@hookform/resolvers/yup';
+//import * as yup from 'yup';
 import {BrowserRouter as Router,Link,NavLink,Route,useHistory,useParams} from 'react-router-dom'
 
 
 import { ToastContainer, toast,position } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+// const schema=yup.object().shape({
+//       farmername:yup.string().required(),
+//       farmeremail:yup.string().email().required(),
+//       farmerpassword : yup.string().min(4).max(6).required,
+//       farmercontactno :yup.number().min(10).max(10).required,
+//      role :yup.string().required,
+//      farmeraddress:
+//      {street: yup.string().required(),
+//       state:yup.string().required,
+//      city:yup.string().required(),
+//      pincode:yup.number().required
+//     },
+//      farmerbankdeatils:
+//     {account_number:yup.string().max(13).required(),
+//       bank_name :yup.string().required,
+//       ifsc_code:yup.string().required
+//  }
+      
+
+
+
+//  })
 function FarmerRegister() {
 
       const[farmername,setName]=useState("");
@@ -38,12 +63,11 @@ function FarmerRegister() {
     
       async function Register(e)
        {     
-            let id=Math.floor(Math.random() * (100 - 10) + 10) 
-             toast.success("Update Sucessfully")
-            history.push("/loginfarmer/"+id)
+           // let id=Math.floor(Math.random() * (100 - 10) + 10) 
+            
               
              console.warn() 
-                  e.preventDefault();
+      
                             
       let item={id,farmername,farmeremail,farmerpassword,farmercontactno,role,farmeraddress:{street,state,city,pincode},farmerbankdeatils:{account_number,bank_name,ifsc_code},messages:{farmer_id,dealer_id,dealer_name,dealer_No,message}}
             
@@ -60,6 +84,8 @@ function FarmerRegister() {
   
 
             })
+            toast.success("Register Sucessfully")
+            history.push("/farmermain/"+id)
             result= await  result.json()          
             console.warn(result)
 
@@ -68,6 +94,7 @@ function FarmerRegister() {
             
        }
 
+       //const{register,handleSubmit,formState:{errors}}=useForm();
        
 
     return (   
@@ -78,31 +105,44 @@ function FarmerRegister() {
             <div id="one"><h1> Register Here</h1></div>
             <div id="two" class="col-sm-6 offset-sm-3 ">
                   <h2>Personal Details</h2>
-            <input type="text" onChange={(e)=>setName(e.target.value)}     class="form-control " placeholder="Name" id="name" required></input>
+            <input type="text" onChange={(e)=>setName(e.target.value)}     class="form-control " placeholder="Name" id="name"  >                 
+            </input>
+            
             <br></br>
-            <input type="email" onChange={(e)=>setEmail(e.target.value)} class="form-control" placeholder="Email" required ></input>
+            <input type="email" onChange={(e)=>setEmail(e.target.value)} class="form-control" placeholder="Email" ></input>
+            
             <br></br>
-            <input type="password" onChange={(e)=>setPass(e.target.value)} className="form-control" placeholder="Password" required></input>
+            <input type="password" onChange={(e)=>setPass(e.target.value)} className="form-control" placeholder="Password"  ></input>
+                
             <br></br>
-            <input type="text" onChange={(e)=>setNumber(e.target.value)} className="form-control" placeholder="Contatct No" required></input>
+            <input type="text" onChange={(e)=>setNumber(e.target.value)} className="form-control" placeholder="Contatct No"></input>
+      
             <br></br>
-            <input type="text" onChange={(e)=>setRole(e.target.value)} className="form-control" placeholder="Role" required></input>
+            <input type="text" onChange={(e)=>setRole(e.target.value)} className="form-control" placeholder="Role"  ></input>
+            
             <br></br>
             <h2>Address</h2>
-            <input type="text" onChange={(e)=>setStreet(e.target.value)} className="form-control" placeholder="street" required></input>
+            <input type="text" onChange={(e)=>setStreet(e.target.value)} className="form-control" placeholder="street"  ></input>
+               
             <br></br>
-            <input type="text" onChange={(e)=>setState(e.target.value)} className="form-control" placeholder="state" required></input>
+            <input type="text" onChange={(e)=>setState(e.target.value)} className="form-control" placeholder="state" ></input>
+            
             <br></br>         
-            <input type="text" onChange={(e)=>setCity(e.target.value)} className="form-control" placeholder="city" required></input>
+            <input type="text" onChange={(e)=>setCity(e.target.value)} className="form-control" placeholder="city" ></input>
+              
             <br></br>
-            <input type="text" onChange={(e)=>setPincode(e.target.value)} className="form-control" placeholder="Pincode" required></input>
+            <input type="text" onChange={(e)=>setPincode(e.target.value)} className="form-control" placeholder="Pincode" ></input>
+            
             <br></br>
             <h2>Bank Details</h2>
-            <input type="text" onChange={(e)=>setAccoNo(e.target.value)} className="form-control" placeholder="Account No" required></input>
+            <input type="text" onChange={(e)=>setAccoNo(e.target.value)} className="form-control" placeholder="Account No" ></input>
+            
             <br></br>
-            <input type="text" onChange={(e)=>setBankName(e.target.value)} className="form-control" placeholder="Bank Name" required></input>
+            <input type="text" onChange={(e)=>setBankName(e.target.value)} className="form-control" placeholder="Bank Name" ></input>
+            
             <br></br>
-            <input type="text" onChange={(e)=>setIfcCode(e.target.value)} className="form-control" placeholder="IFSC Code" required></input>
+            <input type="text" onChange={(e)=>setIfcCode(e.target.value)} className="form-control" placeholder="IFSC Code" ></input>
+            
             <br></br>
             <button onClick={Register} class="btn btn-primary">Register</button>
             </div>
